@@ -25,8 +25,8 @@
     "@types/commander": "^2.12.2",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.8",
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
-    "@typescript-eslint/parser": "^6.2.1",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
     "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
@@ -37,6 +37,6 @@
     "typescript": "^5.1.6"
   },
   "lint-staged": {
-      "*.{ts,tsx,js,jsx}": "eslint --cache --fix"
+    "*.{ts,tsx,js,jsx}": "eslint --cache --fix"
   }
 }
