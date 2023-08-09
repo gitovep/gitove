@@ -1,7 +1,7 @@
 import inquirer, { QuestionCollection } from 'inquirer';
-import { is } from 'typia';
 import { commitMessage } from './message';
-import { CommitMessageInput } from '../../types';
+import { is } from 'typia';
+import { CommitMessageInput } from 'types/commit';
 
 type CommitMessageAnswers = Record<CommitMessageInput, string | undefined>;
 
