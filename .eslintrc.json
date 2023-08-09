@@ -5,6 +5,38 @@
   "parserOptions": { "project" : "./tsconfig.json" },
   "rules": {
     "arrow-body-style": "off",
-    "import/prefer-default-export": "off"
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal", 
+          ["parent", "sibling", "index"],
+          ["unknown", "type"]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "typia",
+            "group": "type",
+            "position": "after"
+          },
+          {
+            "pattern": "types/*",
+            "group": "type",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [],
+        "newlines-between": "ignore",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "distinctGroup": false
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
