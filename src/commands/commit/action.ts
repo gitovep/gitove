@@ -1,31 +1,37 @@
-import { createInterface } from 'node:readline';
-import commitMessage from './message';
+import inquirer, { QuestionCollection } from 'inquirer';
+import { is } from 'typia';
+import { commitMessage } from './message';
+import { CommitMessageInput } from '../../types';
 
-const readline = createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+type CommitMessageAnswers = Record<CommitMessageInput, string | undefined>;
 
-export const commitAction = () => {
-  readline.question('Choose a commit type: ', (answer) => {
-    commitMessage.type = answer;
+const questions: QuestionCollection<CommitMessageAnswers> = [
+  {
+    name: CommitMessageInput.TYPE,
+    type: 'input',
+  },
+  {
+    name: CommitMessageInput.SCOPE,
+    type: 'input',
+  },
+  {
+    name: CommitMessageInput.TITLE,
+    type: 'input',
+  },
+  {
+    name: CommitMessageInput.BODY,
+    type: 'input',
+  },
+];
 
-    readline.question('Choose a commit scope(Optional): ', (answer) => {
-      commitMessage.scope = answer;
+export const commitAction = async () => {
+  const answers: CommitMessageAnswers = await inquirer.prompt(questions);
 
-      readline.question('Enter the commit title: ', (answer) => {
-        commitMessage.title = answer;
-
-        readline.question('Enter the commit body(Optional): ', (answer) => {
-          commitMessage.body = answer;
-
-          readline.close();
-        });
-      });
-    });
+  Object.entries(answers).forEach(([key, value]) => {
+    if (value && is<CommitMessageInput>(key)) {
+      commitMessage.set(key, value);
+    }
   });
 
-  readline.on('close', () => {
-    console.log(commitMessage);
-  });
-}
+  console.log(commitMessage);
+};
