@@ -10,7 +10,8 @@
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "ts-patch install"
   },
   "bin": {
     "gitove": "dist/index.js"
@@ -20,11 +21,14 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^11.0.0",
+    "inquirer": "^8.2.6",
     "execa": "5.1.1"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
+    "@types/inquirer": "^8.2.6",
     "@types/jest": "^29.5.3",
+    "@types/module-alias": "^2.0.1",
     "@types/node": "^20.4.8",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
@@ -35,7 +39,11 @@
     "husky": "^8.0.0",
     "jest": "^29.6.2",
     "lint-staged": "^13.2.3",
-    "typescript": "^5.1.6"
+    "module-alias": "^2.2.3",
+    "ts-node": "^10.9.1",
+    "ts-patch": "^3.0.2",
+    "typescript": "^5.1.6",
+    "typia": "^4.2.1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint --cache --fix"

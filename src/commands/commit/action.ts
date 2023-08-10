@@ -1,31 +1,16 @@
-import { createInterface } from 'node:readline';
-import commitMessage from './message';
+import inquirer from 'inquirer';
+import { commitMessage } from './message';
+import { commitQuestions } from './questions';
+import { is } from 'typia';
 
-const readline = createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+export const commitAction = async () => {
+  const answers: CommitMessageAnswers = await inquirer.prompt(commitQuestions);
 
-export const commitAction = () => {
-  readline.question('Choose a commit type: ', (answer) => {
-    commitMessage.type = answer;
-
-    readline.question('Choose a commit scope(Optional): ', (answer) => {
-      commitMessage.scope = answer;
-
-      readline.question('Enter the commit title: ', (answer) => {
-        commitMessage.title = answer;
-
-        readline.question('Enter the commit body(Optional): ', (answer) => {
-          commitMessage.body = answer;
-
-          readline.close();
-        });
-      });
-    });
+  Object.entries(answers).forEach(([key, value]) => {
+    if (value && is<CommitMessageInput>(key)) {
+      commitMessage.set(key, value);
+    }
   });
 
-  readline.on('close', () => {
-    console.log(commitMessage);
-  });
-}
+  console.log(commitMessage);
+};
