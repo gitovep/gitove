@@ -1,0 +1,16 @@
+{
+  "emojis": [
+    {
+      "emoji": "🎨",
+      "code": ":art:",
+      "description": "Refactor",
+      "name": "art"
+    },
+    {
+      "emoji": "⚡️",
+      "code": ":zap:",
+      "description": "Enhanced",
+      "name": "zap"
+    }
+  ]
+}
