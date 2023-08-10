@@ -19,7 +19,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "commander": "^11.0.0"
+    "commander": "^11.0.0",
+    "execa": "5.1.1"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
