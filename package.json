@@ -1,13 +1,19 @@
 {
   "name": "gitove",
   "version": "0.0.1",
-  "type":"module",
+  "type": "module",
   "description": "An interactive git cli tool for consistant commit messages.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "build": "tsc",
-    "start": "pnpm build && node --experimental-specifier-resolution=node dist/index.js",
+    "start": "pnpm build && node --loader=./dist/config/loader.js --experimental-specifier-resolution=node --no-warnings dist/index.js",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,8 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^11.0.0",
-    "inquirer": "^8.2.6",
-    "execa": "5.1.1"
+    "execa": "5.1.1",
+    "inquirer": "^8.2.6"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
@@ -37,6 +43,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-plugin-import": "^2.28.0",
+    "esm-module-alias": "^2.0.3",
     "husky": "^8.0.0",
     "jest": "^29.6.2",
     "lint-staged": "^13.2.3",

@@ -1,4 +1,3 @@
-import './config/alias';
 import { Command } from 'commander';
 import { createCommitCommand } from './commands';
 

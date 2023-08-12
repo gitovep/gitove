@@ -49,6 +49,9 @@ devDependencies:
   eslint-plugin-import:
     specifier: ^2.28.0
     version: 2.28.0(@typescript-eslint/parser@6.3.0)(eslint@8.46.0)
+  esm-module-alias:
+    specifier: ^2.0.3
+    version: 2.0.3
   husky:
     specifier: ^8.0.0
     version: 8.0.3
@@ -1922,6 +1925,10 @@ packages:
       text-table: 0.2.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /esm-module-alias@2.0.3:
+    resolution: {integrity: sha512-RQQRmE09MZ3PoCgwk4cYfjhuJjA9e8cQzaqfkSiVQutZ0vWyMfCr0xaD2ZX7yMEeitBqAz61DYIpKOD1f7JftA==}
     dev: true
 
   /espree@9.6.1:
