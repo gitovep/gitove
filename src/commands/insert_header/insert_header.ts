@@ -1,20 +1,24 @@
-import fs from 'fs';
-import { Emoji, CommitMessage } from './types';
+import { DEFAULT_CONFIG } from '../../config/defaultConfig';
 
 // 설정 파일에서 type에 해당하는 code로 변환하기
-const convertCommitHeader = async (type: string | undefined): Promise<Emoji | undefined> => {
+const convertCommitType = async (type: string | undefined): Promise<string | undefined> => {
   // 설정 파일 읽기 (json 파일이라 가정)
-  const data: string = await fs.promises.readFile('configExample.json', 'utf8');
-  const emojis: Emoji[] = JSON.parse(data).map((emoji: Emoji) => emoji);
 
-  return emojis.find((emoji) => emoji.name === type);
+  return DEFAULT_CONFIG.type.find((t) => t.name === type)?.name;
+};
+
+// 설정 파일에서 scope에 해당하는 code로 변환하기
+const convertCommitScope = async (scope: string | undefined): Promise<string | undefined> => {
+  // 설정 파일 읽기 (json 파일이라 가정)
+
+  return DEFAULT_CONFIG.scope.find((s) => s.name === scope)?.name;
 };
 
 const insertHeader = (commitMessage: CommitMessage): string => {
   // type 변환
-  const convertedType = convertCommitHeader(commitMessage.type);
+  const convertedType = convertCommitType(commitMessage.type);
   // scope 변환
-  const convertedScope = convertCommitHeader(commitMessage.scope);
+  const convertedScope = convertCommitScope(commitMessage.scope);
 
   const type = convertedType ? `[${convertedType}]` : '';
   const scope = convertedScope ? `[${convertedScope}]` : '';
