@@ -1,12 +1,13 @@
 {
   "name": "gitove",
   "version": "0.0.1",
-  "description": "",
+  "type":"module",
+  "description": "An interactive git cli tool for consistant commit messages.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "start": "pnpm build && node dist/index.js",
+    "start": "pnpm build && node --experimental-specifier-resolution=node dist/index.js",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
     "test": "echo \"Error: no test specified\" && exit 1",
