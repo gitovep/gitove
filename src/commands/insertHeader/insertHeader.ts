@@ -2,15 +2,11 @@ import { DEFAULT_CONFIG } from '../../config/defaultConfig';
 
 // 설정 파일에서 type에 해당하는 code로 변환하기
 const convertCommitType = async (type: string | undefined): Promise<string | undefined> => {
-  // 설정 파일 읽기 (json 파일이라 가정)
-
   return DEFAULT_CONFIG.type.find((t) => t.name === type)?.name;
 };
 
 // 설정 파일에서 scope에 해당하는 code로 변환하기
 const convertCommitScope = async (scope: string | undefined): Promise<string | undefined> => {
-  // 설정 파일 읽기 (json 파일이라 가정)
-
   return DEFAULT_CONFIG.scope.find((s) => s.name === scope)?.name;
 };
 
