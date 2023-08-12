@@ -49,6 +49,9 @@ devDependencies:
   eslint-plugin-import:
     specifier: ^2.28.0
     version: 2.28.0(@typescript-eslint/parser@6.3.0)(eslint@8.46.0)
+  esm-module-alias:
+    specifier: ^2.0.3
+    version: 2.0.3
   husky:
     specifier: ^8.0.0
     version: 8.0.3
@@ -58,9 +61,6 @@ devDependencies:
   lint-staged:
     specifier: ^13.2.3
     version: 13.2.3
-  module-alias:
-    specifier: ^2.2.3
-    version: 2.2.3
   ts-node:
     specifier: ^10.9.1
     version: 10.9.1(@types/node@20.4.8)(typescript@5.1.6)
@@ -1924,6 +1924,10 @@ packages:
       - supports-color
     dev: true
 
+  /esm-module-alias@2.0.3:
+    resolution: {integrity: sha512-RQQRmE09MZ3PoCgwk4cYfjhuJjA9e8cQzaqfkSiVQutZ0vWyMfCr0xaD2ZX7yMEeitBqAz61DYIpKOD1f7JftA==}
+    dev: true
+
   /espree@9.6.1:
     resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -3241,10 +3245,6 @@ packages:
 
   /minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-    dev: true
-
-  /module-alias@2.2.3:
-    resolution: {integrity: sha512-23g5BFj4zdQL/b6tor7Ji+QY4pEfNH784BMslY9Qb0UnJWRAt+lQGLYmRaM0KDBwIG23ffEBELhZDP2rhi9f/Q==}
     dev: true
 
   /ms@2.1.2:
