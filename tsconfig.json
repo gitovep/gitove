@@ -13,10 +13,10 @@
       "types/*": ["src/types/*"]
     },
 
-    "target": "ES2018",
-    "module": "CommonJS",
+    "target": "ES2022",
+    "module": "ES2022",
     "lib": [
-      "ES2018"
+      "ES2022"
     ],
 
     "declaration": true,
