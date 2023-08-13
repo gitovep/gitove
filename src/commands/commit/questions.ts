@@ -1,14 +1,36 @@
-import { QuestionCollection } from 'inquirer';
-import { CommitMessageInput } from 'types/commit';
+import inquirer, { QuestionCollection } from 'inquirer';
+import inquirerAutocompletePrompt from 'inquirer-autocomplete-prompt';
+import { CommitMessageInput } from 'src/types/commit';
+import { filterCommitScope, filterCommitType } from 'src/utils/filterHeaders';
+
+inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
 
 export const commitQuestions: QuestionCollection<CommitMessageAnswers> = [
   {
     name: CommitMessageInput.TYPE,
-    type: 'input',
+    message: 'Choose commit type:',
+    type: 'autocomplete',
+    source: (_: unknown, input: string) => {
+      return Promise.resolve(
+        filterCommitType(input).map((keyword) => ({
+          name: `${keyword.alias} - ${keyword.description}`,
+          value: keyword.name,
+        })),
+      );
+    },
   },
   {
     name: CommitMessageInput.SCOPE,
-    type: 'input',
+    message: 'Choose commit scope:',
+    type: 'autocomplete',
+    source: (_: unknown, input: string) => {
+      return Promise.resolve(
+        filterCommitScope(input).map((keyword) => ({
+          name: `${keyword.alias} - ${keyword.description}`,
+          value: keyword.name,
+        })),
+      );
+    },
   },
   {
     name: CommitMessageInput.TITLE,
