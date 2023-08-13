@@ -6,6 +6,8 @@ export const CommitMessageInput = {
 } as const;
 
 declare global {
+  type CommitHeaderType = 'type' | 'scope';
+
   type CommitMessageInput = typeof CommitMessageInput[keyof typeof CommitMessageInput];
 
   type CommitMessageAnswers = Record<CommitMessageInput, string | undefined>;
