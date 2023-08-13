@@ -1,1 +1,1 @@
-export * from './git_wrap';
+export * from './gitWrap';
