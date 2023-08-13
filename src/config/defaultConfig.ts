@@ -1,4 +1,4 @@
-import { DEFAULT_COMMIT_TYPES, DEFAULT_EMOJIS } from 'src/constants';
+import { DEFAULT_COMMIT_TYPES, DEFAULT_EMOJIS, DEFAULT_REPLACE_EXAMPLES } from 'src/constants';
 
 export const DEFAULT_CONFIG: Configuration = {
   type: [
@@ -7,5 +7,6 @@ export const DEFAULT_CONFIG: Configuration = {
   scope: [],
   replace: [
     ...DEFAULT_EMOJIS,
+    ...DEFAULT_REPLACE_EXAMPLES,
   ],
 };
