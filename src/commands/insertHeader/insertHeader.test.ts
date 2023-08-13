@@ -8,7 +8,7 @@ import { insertHeader } from './insertHeader';
 // };
 
 describe('insertHeader', () => {
-  it('string을 반환해야 함', () => {
+  it('have to return string type', () => {
     const commitMessage: CommitMessage = {
       type: 'dd',
       scope: 'dd',
@@ -20,7 +20,7 @@ describe('insertHeader', () => {
 
     expect(typeof result).toEqual('string');
   });
-  it('type 또는 scope가 undefined여도 동작해야 함', () => {});
+  it('have to convert type and scope based on the corresponding settings', () => {});
 
-  it('type 또는 scope가 config에 있는 설정대로 잘 변환되어야 함', () => {});
+  it('have to work even when type or scope is not defined', () => {});
 });
