@@ -1,13 +1,13 @@
 import { DEFAULT_CONFIG } from '../../config/defaultConfig';
 
 // 설정 파일에서 type에 해당하는 code로 변환하기
-const convertCommitType = async (type: string | undefined): Promise<string | undefined> => {
-  return DEFAULT_CONFIG.type.find((t) => t.name === type)?.name;
+const convertCommitType = (type: string | undefined): string | undefined => {
+  return DEFAULT_CONFIG.type.find((t) => t.alias === type)?.name;
 };
 
 // 설정 파일에서 scope에 해당하는 code로 변환하기
-const convertCommitScope = async (scope: string | undefined): Promise<string | undefined> => {
-  return DEFAULT_CONFIG.scope.find((s) => s.name === scope)?.name;
+const convertCommitScope = (scope: string | undefined): string | undefined => {
+  return DEFAULT_CONFIG.scope.find((s) => s.alias === scope)?.name;
 };
 
 const insertHeader = (commitMessage: CommitMessage): string => {
