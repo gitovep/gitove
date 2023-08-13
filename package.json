@@ -16,7 +16,7 @@
     "start": "pnpm build && node --loader=./dist/config/loader.js --experimental-specifier-resolution=node --no-warnings dist/index.js",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest ./test",
     "prepare": "husky install",
     "postinstall": "ts-patch install"
   },
@@ -55,5 +55,18 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint --cache --fix"
+  },
+  "jest": {
+    "moduleDirectories": ["node_modules", "src"],
+    "moduleFileExtensions": ["js", "json", "ts"],
+    "moduleNameMapper": {
+      "src/(.*)$": "<rootDir>/src/$1"
+    },
+    "rootDir": ".",
+    "testEnvironment": "node",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    }
   }
 }
