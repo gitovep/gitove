@@ -15,16 +15,20 @@ const options = {
   ],
 };
 
-export const filterCommitType = (input?: string) => {
-  const list = DEFAULT_CONFIG.type;
+const filterHeader = (headerType: CommitHeaderType, input?: string) => {
+  const list = DEFAULT_CONFIG[headerType];
   const fuse = new Fuse(list, options);
 
   return input ? fuse.search(input).map(({ item }) => item) : list;
 };
 
-export const filterCommitScope = (input?: string) => {
-  const list = DEFAULT_CONFIG.scope;
-  const fuse = new Fuse(list, options);
-
-  return input ? fuse.search(input).map(({ item }) => item) : list;
+export const filterHeaderSource = (headerType: CommitHeaderType) => {
+  return (_: unknown, input: string) => {
+    return Promise.resolve(
+      filterHeader(headerType, input).map((keyword) => ({
+        name: `${keyword.alias} - ${keyword.description}`,
+        value: keyword.name,
+      })),
+    );
+  };
 };
