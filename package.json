@@ -1,19 +1,16 @@
 {
   "name": "gitove",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "description": "An interactive git cli tool for consistant commit messages.",
-  "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.js",
-    "types": "./dist/index.d.ts"
-  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "engines": {
     "node": ">=16"
   },
   "scripts": {
     "build": "tsc",
-    "start": "pnpm build && node --loader=./dist/config/loader.js --experimental-specifier-resolution=node --no-warnings dist/index.js",
+    "start": "pnpm build && node --loader=./lib/config/loader.js --experimental-specifier-resolution=node --no-warnings lib/index.js",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
     "test": "jest ./test",
@@ -21,7 +18,7 @@
     "postinstall": "ts-patch install"
   },
   "bin": {
-    "gitove": "dist/index.js"
+    "gitove": "lib/index.js"
   },
   "keywords": [],
   "author": "",
