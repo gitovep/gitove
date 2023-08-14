@@ -20,7 +20,7 @@ const convertCommitScope = (scope: string | undefined): string => {
     return '';
   }
 
-  const finScopeResult = DEFAULT_CONFIG.scope.find((t) => t.alias === scope);
+  const finScopeResult = DEFAULT_CONFIG.scope.find((s) => s.alias === scope);
   if (!finScopeResult) {
     throw new Error('cannot find corresponding commit scope in configuration file');
   }
