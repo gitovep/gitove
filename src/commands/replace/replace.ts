@@ -1,21 +1,17 @@
-// import { DEFAULT_CONFIG } from "./../../config/defaultConfig";
+// import { DEFAULT_CONFIG } from "src/constants/replaceExamples";
 
-const isReplaceable = async (commitBody: string = ''): Promise<string[] | string | undefined> => {
-    // commitBody의 기본값을 빈 문자열('')로 설정하여, 
-    // 만약 함수에 undefined가 넘어온다면 자동으로 빈 문자열로 초기화
-    // 이렇게 하면 commitBody는 무조건 문자열 타입이 됨
+const extractAliasFromKeyword = (commitBody: string): string[] => {
+  // 정규식 정의 - {}
+  const pattern = /\{([^}]+)\}/g;
+  // commitMessage에 {}이 없는 경우에는 빈배열
+  const matchesPattern = commitBody.match(pattern) || []; 
 
-    const pattern = /\{([^}]+)\}/g; // 모든 {} 패턴 안의 keyword를 추출하는 정규 표현식
-    const matchKeywords = []
-    let match
+  /** {alias}
+   * match[0]: '{'
+   * match[1]: 'alias'
+   * match[2]: '}'
+   */
+  const extractedAlias = matchesPattern.map((match) => match[1]);
+  return extractedAlias;
+};
 
-    while ((match = pattern.exec(commitBody)) !== null) {
-        matchKeywords.push(match[1]);
-      }
-
-    // {keyword}가 있으면 배열에 keyword 반환, 없으면 빈배열 반환
-    return matchKeywords 
-}
-
-// 등록한 예약어
-// 해당 앨리어스의 name 리턴
