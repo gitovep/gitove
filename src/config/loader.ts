@@ -1,6 +1,6 @@
 import generateAliasResolver from 'esm-module-alias';
 
 const aliases = {
-  src: 'dist',
+  src: 'lib',
 };
 export const resolve = generateAliasResolver(aliases);
