@@ -10,7 +10,7 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "types/*": ["src/types/*"]
+      "src/*": ["src/*"]
     },
 
     "target": "ES2022",
