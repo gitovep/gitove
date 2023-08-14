@@ -1,19 +1,18 @@
 {
   "name": "gitove",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "description": "An interactive git cli tool for consistant commit messages.",
-  "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.js",
-    "types": "./dist/index.d.ts"
-  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "engines": {
     "node": ">=16"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "pnpm build && node --loader=./dist/config/loader.js --experimental-specifier-resolution=node --no-warnings dist/index.js",
+    "build": "tsc -p tsconfig.build.json",
+    "build:babel": "babel src -d lib --extensions \".ts\"",
+    "build:tsc": "tsc -p tsconfig.build.json",
+    "start": "pnpm build && node --loader=./lib/config/loader.js --experimental-specifier-resolution=node --no-warnings lib/index.js",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
     "test": "jest ./test",
@@ -21,7 +20,7 @@
     "postinstall": "ts-patch install"
   },
   "bin": {
-    "gitove": "dist/index.js"
+    "gitove": "lib/index.js"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +33,10 @@
     "inquirer-autocomplete-prompt": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-typescript": "^7.22.5",
     "@types/commander": "^2.12.2",
     "@types/inquirer": "^8.2.6",
     "@types/inquirer-autocomplete-prompt": "^3.0.0",
@@ -42,6 +45,9 @@
     "@types/node": "^20.4.8",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
+    "babel-plugin-module-extension-resolver": "^1.0.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "babel-plugin-transform-import-meta": "^2.2.1",
     "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
@@ -60,8 +66,15 @@
     "*.{ts,tsx,js,jsx}": "eslint --cache --fix"
   },
   "jest": {
-    "moduleDirectories": ["node_modules", "src"],
-    "moduleFileExtensions": ["js", "json", "ts"],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "moduleNameMapper": {
       "src/(.*)$": "<rootDir>/src/$1"
     },
