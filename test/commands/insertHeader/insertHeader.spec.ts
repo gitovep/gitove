@@ -4,7 +4,7 @@ describe('insertHeader', () => {
   it('have to return string type', () => {
     const commitMessage: CommitMessage = {
       type: 'feat',
-      scope: 'header',
+      scope: 'config',
       title: 'insertHeader',
       body: 'create insertHeader method',
     };
@@ -13,25 +13,40 @@ describe('insertHeader', () => {
 
     expect(typeof result).toEqual('string');
   });
-  it('have to convert type and scope based on the corresponding settings', () => {
+  it('have to convert type and scope based on the corresponding configuration', () => {
     const matchedCommitMessage: CommitMessage = {
       type: 'feat',
-      scope: 'header',
-      title: 'insertHeader',
-      body: 'create insertHeader method',
-    };
-
-    const unmatchedCommitMessage: CommitMessage = {
-      type: 'feature',
-      scope: 'header',
+      scope: 'config',
       title: 'insertHeader',
       body: 'create insertHeader method',
     };
 
     const matchedCommitMessageResult: string = insertHeader(matchedCommitMessage);
-    const unmatchedCommitMessageResult : string = insertHeader(unmatchedCommitMessage);
     expect(matchedCommitMessageResult).toContain('[feat:]');
-    expect(unmatchedCommitMessageResult).not.toContain('[feat:]');
+  });
+
+  it('have to throw error if input type or scope is string but corresponding configuration cannot be found', () => {
+    const unmatchedTypeMessage: CommitMessage = {
+      type: 'feature',
+      scope: 'config',
+      title: 'insertHeader',
+      body: 'create insertHeader method',
+    };
+
+    const unmatchedScopeMessage: CommitMessage = {
+      type: 'feat',
+      scope: 'configure',
+      title: 'insertHeader',
+      body: 'create insertHeader method',
+    };
+
+    expect(() => {
+      insertHeader(unmatchedTypeMessage);
+    }).toThrow('cannot find corresponding commit type');
+
+    expect(() => {
+      insertHeader(unmatchedScopeMessage);
+    }).toThrow('cannot find corresponding commit scope');
   });
 
   it('have to work even when type or scope is not defined', () => {
