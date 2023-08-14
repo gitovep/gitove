@@ -30,8 +30,6 @@ describe('insertHeader', () => {
 
     const matchedCommitMessageResult: string = insertHeader(matchedCommitMessage);
     const unmatchedCommitMessageResult : string = insertHeader(unmatchedCommitMessage);
-    console.log(matchedCommitMessageResult);
-    console.log(unmatchedCommitMessageResult);
     expect(matchedCommitMessageResult).toContain('[feat:]');
     expect(unmatchedCommitMessageResult).not.toContain('[feat:]');
   });
@@ -45,7 +43,6 @@ describe('insertHeader', () => {
     };
 
     const result: string = insertHeader(commitMessage);
-    console.log(result);
     expect(typeof result).toEqual('string');
     expect(result).toEqual(commitMessage.title);
   });
