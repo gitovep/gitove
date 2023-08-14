@@ -1,0 +1,10 @@
+.github
+.husky
+src
+test
+.eslint*
+babel.config.json
+tsconfig.*
+.npmrc
+.npmignore
+.gitignore
