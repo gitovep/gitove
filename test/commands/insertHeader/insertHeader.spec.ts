@@ -1,4 +1,4 @@
-import { insertHeader } from '../../../src/commands/insertHeader/insertHeader';
+import { insertHeader } from 'src/commands/insertHeader';
 
 describe('insertHeader', () => {
   it('have to return string type', () => {
