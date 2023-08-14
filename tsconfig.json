@@ -27,6 +27,7 @@
     "sourceMap": true,
     "strict": true,
     "noUnusedLocals": true,
+    "isolatedModules": true,
   
     "plugins": [
       {

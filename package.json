@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "build:babel": "babel src -d lib --extensions \".ts\"",
+    "build:babel": "babel src -d lib --extensions \".ts\" --source-maps",
     "build:tsc": "tsc -p tsconfig.build.json",
     "start": "pnpm build && node --loader=./lib/config/loader.js --experimental-specifier-resolution=node --no-warnings lib/index.js",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
