@@ -1,9 +1,22 @@
 {
   "name": "gitove",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "type": "module",
   "description": "An interactive git cli tool for consistant commit messages.",
+  "keywords": [
+    "git"
+  ],
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gitovep/gitove"
+  },
+  "homepage": "https://github.com/gitovep/gitove",
+  "license": "MIT",
   "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
   "engines": {
     "node": ">=16"
   },
@@ -20,9 +33,6 @@
   "bin": {
     "gitove": "lib/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "commander": "^11.0.0",
     "execa": "5.1.1",
