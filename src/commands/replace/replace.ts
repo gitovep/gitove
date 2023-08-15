@@ -21,10 +21,10 @@ const extractAliasFromKeyword = (commitBody: string): string[] => {
 const searchAliasFromConfig = (extractedAlias: string[]): string[] => {
   let matchedName: string[] = [];
 
-  DEFAULT_REPLACE_EXAMPLES.forEach((example) => {
+  DEFAULT_REPLACE_EXAMPLES.forEach((config) => {
     extractedAlias.forEach((alias) => {
-      if (example.alias.includes(alias)) {
-        matchedName.push(example.name);
+      if (config.alias.includes(alias)) {
+        matchedName.push(config.name);
       }
     });
   });
@@ -37,6 +37,7 @@ export const replaceAliasToName = (commitMessage: CommitMessage): string => {
   const extractedAlias = extractAliasFromKeyword(commitMessage.body!);
   const searchedNames = searchAliasFromConfig(extractedAlias);
 
+  // 대치하기 위해 바디 복사
   let replacedBody = commitMessage.body!;
   searchedNames.forEach((searchedName, idx) => {
     const alias = extractedAlias[idx];
