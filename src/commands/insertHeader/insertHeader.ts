@@ -1,28 +1,43 @@
 import { DEFAULT_CONFIG } from '../../config/defaultConfig';
 
-// 설정 파일에서 type에 해당하는 code로 변환하기
-const convertCommitType = (type: string | undefined): string | undefined => {
-  return DEFAULT_CONFIG.type.find((t) => t.alias === type)?.name;
+// Convert commit type using configuration file
+const convertCommitType = (type: string | undefined): string => {
+  if (!type) {
+    return '';
+  }
+
+  const findTypeResult = DEFAULT_CONFIG.type.find((t) => t.alias === type);
+  if (!findTypeResult) {
+    throw new Error('cannot find corresponding commit type in configuration file');
+  }
+
+  return `[${findTypeResult.name}]`;
 };
 
-// 설정 파일에서 scope에 해당하는 code로 변환하기
-const convertCommitScope = (scope: string | undefined): string | undefined => {
-  return DEFAULT_CONFIG.scope.find((s) => s.alias === scope)?.name;
+// Convert commit scope using configuration file
+const convertCommitScope = (scope: string | undefined): string => {
+  if (!scope) {
+    return '';
+  }
+
+  const finScopeResult = DEFAULT_CONFIG.scope.find((s) => s.alias === scope);
+  if (!finScopeResult) {
+    throw new Error('cannot find corresponding commit scope in configuration file');
+  }
+
+  return `[${finScopeResult.name}]`;
 };
 
 const insertHeader = (commitMessage: CommitMessage): string => {
-  // type 변환
+  const { title } = commitMessage;
+  // Convert commit type
   const convertedType = convertCommitType(commitMessage.type);
-  // scope 변환
+  // Convert commit scope
   const convertedScope = convertCommitScope(commitMessage.scope);
 
-  const type = convertedType ? `[${convertedType}]` : '';
-  const scope = convertedScope ? `[${convertedScope}]` : '';
-  const { title } = commitMessage;
-
-  // 변환 된 헤더를 타이틀에 합친 후 타이틀 리턴
-  // 예시 : [type][scope]title
-  return type + scope + title;
+  // Combine the transformed header with the title and return the title
+  // ex : [type][scope]title
+  return convertedType + convertedScope + title;
 };
 
 export { insertHeader };
