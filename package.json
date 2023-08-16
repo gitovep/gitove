@@ -3,6 +3,7 @@
   "version": "0.1.13",
   "type": "module",
   "description": "An interactive git cli tool for consistant commit messages.",
+  "license": "MIT",
   "keywords": [
     "git"
   ],
@@ -12,7 +13,9 @@
     "url": "https://github.com/gitovep/gitove"
   },
   "homepage": "https://github.com/gitovep/gitove",
-  "license": "MIT",
+  "publishConfig": {
+    "@<em>ninthsun91</em>:registry": "https://npm.pkg.github.com/"
+  },
   "main": "./lib/index.js",
   "files": [
     "lib"
