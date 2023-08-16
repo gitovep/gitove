@@ -8,9 +8,11 @@ body:
   - type: textarea
     id: bug-description
     attributes:
-      label: Describe the bug
+      label: Description
       description: A clear description the bug. If you want to contribute to fix this issue, tell us in the description.
-      placeholder: Description
+      placeholder: |
+        Describe the bug
+        If applicable, add screenshots or error messages.
     validations:
       required: true
   - type: textarea
