@@ -1,0 +1,17 @@
+{
+    "type": [{
+        "name":"feat",
+        "alias":"f",
+        "descriiption":"null"
+    }],
+    "scope": [{
+        "name":"null",
+        "alias":"null",
+        "description":"null"
+    }],
+    "keyword": [{
+        "name":"null",
+        "alias":"null",
+        "description":"null"
+    }]
+}
