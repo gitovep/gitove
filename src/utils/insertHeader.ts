@@ -1,5 +1,6 @@
 import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
 import { CommitMessageInput } from 'src/types';
+import { capitalizeTitle } from './capitalizeTitle';
 
 // Convert commit type using configuration file
 const convertCommitType = (type: string | undefined): string => {
@@ -37,12 +38,18 @@ export const insertHeader = (commitMessage: CommitMessage): string => {
   // Convert commit type
   const commitType = commitMessage.get(CommitMessageInput.TYPE);
   const convertedType = convertCommitType(commitType);
+
   // Convert commit scope
   const commitScope = commitMessage.get(CommitMessageInput.SCOPE);
   const convertedScope = convertCommitScope(commitScope);
 
+  const title = commitMessage.get(CommitMessageInput.TITLE);
+  if (title === undefined) {
+    throw new Error('Commit title cannot be undefined');
+  }
+  
   // Combine the transformed header with the title and return the title
   // ex : type(scope): Title
-  const title = commitMessage.get(CommitMessageInput.TITLE);
-  return formatCommitMessage(convertedType, convertedScope, title!);
+  const commitTitle = capitalizeTitle(title);
+  return formatCommitMessage(convertedType, convertedScope, commitTitle);
 };

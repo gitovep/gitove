@@ -1,6 +1,6 @@
 {
   "name": "gitove",
-  "version": "0.1.11",
+  "version": "0.1.13",
   "type": "module",
   "description": "An interactive git cli tool for consistant commit messages.",
   "keywords": [
