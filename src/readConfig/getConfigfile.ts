@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { DEFAULT_CONFIG } from '../config/defaultConfig';
+import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
 
 const dirname = fileURLToPath(new URL('.', import.meta.url));
 const test = path.resolve(dirname, '../..');

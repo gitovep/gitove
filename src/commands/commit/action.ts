@@ -1,4 +1,5 @@
 import inquirer from 'inquirer';
+import { insertHeader, replaceAliasToName } from 'src/utils';
 import { commitMessage } from './message';
 import { commitQuestions } from './questions';
 import { is } from 'typia';
@@ -12,5 +13,9 @@ export const commitAction = async () => {
     }
   });
 
-  console.log(commitMessage);
+  const title = insertHeader(commitMessage);
+  const message = replaceAliasToName(commitMessage);
+
+  console.log(title);
+  console.log(message);
 };
