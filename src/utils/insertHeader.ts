@@ -47,7 +47,7 @@ export const insertHeader = (commitMessage: CommitMessage): string => {
   if (title === undefined) {
     throw new Error('Commit title cannot be undefined');
   }
-  
+
   // Combine the transformed header with the title and return the title
   // ex : type(scope): Title
   const commitTitle = capitalizeTitle(title);
