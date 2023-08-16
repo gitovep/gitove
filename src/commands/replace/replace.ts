@@ -1,4 +1,4 @@
-import { DEFAULT_REPLACE_EXAMPLES } from "src/constants/replaceExamples";
+import { DEFAULT_CONFIG } from "src/config/defaultConfig";
 
 // 유저가 작성한 커밋메시지(바디)에서 {alias}의 alias 추출하기
 const extractAliasFromKeyword = (commitBody: string): string[] => {
@@ -21,9 +21,10 @@ const extractAliasFromKeyword = (commitBody: string): string[] => {
 const searchAliasFromConfig = (extractedAlias: string[]): string[] => {
   let matchedName: string[] = [];
 
-  DEFAULT_REPLACE_EXAMPLES.forEach((config) => {
+  DEFAULT_CONFIG.replace.forEach((config) => {
     extractedAlias.forEach((alias) => {
-      if (config.alias.includes(alias)) {
+      // extractedAlias의 문자가 포함된 모든 alias의 name을 리턴하므로 조건 추가
+      if (config.alias.includes(alias) && !config.name.includes(':')) {
         matchedName.push(config.name);
       }
     });
