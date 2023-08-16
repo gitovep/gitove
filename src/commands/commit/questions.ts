@@ -1,8 +1,8 @@
 import inquirer, { QuestionCollection } from 'inquirer';
 import inquirerAutocompletePrompt from 'inquirer-autocomplete-prompt';
 import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
-import { CommitMessageInput } from 'src/types/commit';
 import { filterHeaderSource } from 'src/utils/filterHeaders';
+import { CommitMessageInput } from 'src/types/commit';
 
 inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
 

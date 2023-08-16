@@ -1,5 +1,5 @@
-import { CommitMessageInput } from 'src/types';
 import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
+import { CommitMessageInput } from 'src/types';
 
 // Convert commit type using configuration file
 const convertCommitType = (type: string | undefined): string => {
@@ -29,6 +29,10 @@ const convertCommitScope = (scope: string | undefined): string => {
   return finScopeResult.name;
 };
 
+const formatCommitMessage = (type: string, scope: string, title: string) => {
+  return `${type}(${scope}): ${title}`;
+};
+
 export const insertHeader = (commitMessage: CommitMessage): string => {
   // Convert commit type
   const commitType = commitMessage.get(CommitMessageInput.TYPE);
@@ -36,13 +40,9 @@ export const insertHeader = (commitMessage: CommitMessage): string => {
   // Convert commit scope
   const commitScope = commitMessage.get(CommitMessageInput.SCOPE);
   const convertedScope = convertCommitScope(commitScope);
-  
+
   // Combine the transformed header with the title and return the title
   // ex : type(scope): Title
   const title = commitMessage.get(CommitMessageInput.TITLE);
   return formatCommitMessage(convertedType, convertedScope, title!);
 };
-
-const formatCommitMessage = (type: string, scope: string, title: string) => {
-  return `${type}(${scope}): ${title}`;
-}
