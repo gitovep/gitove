@@ -4,10 +4,10 @@
     subjects: commit, rebase, push, etc.
 -->
 
-## What problem are you trying to solve?
+## Issue or reason for change
 
-## How did you solve it?
+## Description of changes
 
-## What specific areas should be focused on for review?
 
 ## Related issues and links
+
