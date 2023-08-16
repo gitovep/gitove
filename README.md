@@ -83,7 +83,7 @@ You can set your own commit headers by providing `KeywordConfig` to configuratio
 
 
 ## Contributing to Gitove
-If you want to take part in `gitove`, read the [contribution guide](./CONTRIBUTING.md).
+If you want to take part in `gitove`, read the [contribution guide](./docs/CONTRIBUTING.md).
 
 
 

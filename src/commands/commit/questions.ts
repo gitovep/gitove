@@ -29,8 +29,8 @@ export const commitQuestions: QuestionCollection<CommitMessageAnswers> = [
     type: 'input',
     validate: (input: string) => (input ? true : 'Commit message is required'),
     transformer: (input: string) => {
-      return `[${input.length}/${48}]: ${capitalizeTitle(input)}`
-    }
+      return `[${input.length}/${48}]: ${capitalizeTitle(input)}`;
+    },
   },
   {
     name: CommitMessageInput.BODY,
