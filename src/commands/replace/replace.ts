@@ -17,7 +17,7 @@ const extractAliasFromKeyword = (commitBody: string): string[] => {
 };
 
 
-// config에서 사전에 추출한 alias와 매칭되는 name을 찾기
+// config에서 사전에 추출한 alias와 매칭되는 name 찾기
 const searchAliasFromConfig = (extractedAlias: string[]): string[] => {
   let matchedName: string[] = [];
 
