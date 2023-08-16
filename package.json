@@ -42,6 +42,7 @@
     "ts-patch": "^3.0.2",
     "typescript": "^5.1.6",
     "typia": "^4.2.1"
+    "path-exists": "^5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.10",
