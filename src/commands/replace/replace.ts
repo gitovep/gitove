@@ -1,4 +1,5 @@
 import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
+import { CommitMessageInput } from 'src/types';
 
 // 유저가 작성한 커밋메시지(바디)에서 {alias}의 alias 추출하기
 const extractAliasFromKeyword = (commitBody: string): string[] => {
@@ -34,11 +35,14 @@ const searchAliasFromConfig = (extractedAlias: string[]): string[] => {
 
 // 매칭된 name을 커밋메시지에 적용
 export const replaceAliasToName = (commitMessage: CommitMessage): string => {
-  const extractedAlias = extractAliasFromKeyword(commitMessage.body!);
+  const body = commitMessage.get(CommitMessageInput.BODY);
+  if (body === undefined) return '';
+
+  const extractedAlias = extractAliasFromKeyword(body);
   const searchedNames = searchAliasFromConfig(extractedAlias);
 
   // 대치하기 위해 바디 복사
-  let replacedBody = commitMessage.body!;
+  let replacedBody = body;
   searchedNames.forEach((searchedName, idx) => {
     const alias = extractedAlias[idx];
     replacedBody = replacedBody.replace(`{${alias}}`, searchedName);

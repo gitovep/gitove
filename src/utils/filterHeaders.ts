@@ -27,7 +27,7 @@ export const filterHeaderSource = (headerType: CommitHeaderType) => {
     return Promise.resolve(
       filterHeader(headerType, input).map((keyword) => ({
         name: `${keyword.alias} - ${keyword.description}`,
-        value: keyword.name,
+        value: keyword.alias,
       })),
     );
   };

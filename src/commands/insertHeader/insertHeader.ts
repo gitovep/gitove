@@ -1,9 +1,10 @@
-import { DEFAULT_CONFIG } from '../../config/defaultConfig';
+import { CommitMessageInput } from 'src/types';
+import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
 
 // Convert commit type using configuration file
 const convertCommitType = (type: string | undefined): string => {
-  if (!type) {
-    return '';
+  if (type === undefined) {
+    throw new Error('Commit type cannot be undefined');
   }
 
   const findTypeResult = DEFAULT_CONFIG.type.find((t) => t.alias === type);
@@ -11,12 +12,12 @@ const convertCommitType = (type: string | undefined): string => {
     throw new Error('cannot find corresponding commit type in configuration file');
   }
 
-  return `[${findTypeResult.name}]`;
+  return findTypeResult.name;
 };
 
 // Convert commit scope using configuration file
 const convertCommitScope = (scope: string | undefined): string => {
-  if (!scope) {
+  if (scope === undefined) {
     return '';
   }
 
@@ -25,19 +26,23 @@ const convertCommitScope = (scope: string | undefined): string => {
     throw new Error('cannot find corresponding commit scope in configuration file');
   }
 
-  return `[${finScopeResult.name}]`;
+  return finScopeResult.name;
 };
 
-const insertHeader = (commitMessage: CommitMessage): string => {
-  const { title } = commitMessage;
+export const insertHeader = (commitMessage: CommitMessage): string => {
   // Convert commit type
-  const convertedType = convertCommitType(commitMessage.type);
+  const commitType = commitMessage.get(CommitMessageInput.TYPE);
+  const convertedType = convertCommitType(commitType);
   // Convert commit scope
-  const convertedScope = convertCommitScope(commitMessage.scope);
-
+  const commitScope = commitMessage.get(CommitMessageInput.SCOPE);
+  const convertedScope = convertCommitScope(commitScope);
+  
   // Combine the transformed header with the title and return the title
-  // ex : [type][scope]title
-  return convertedType + convertedScope + title;
+  // ex : type(scope): Title
+  const title = commitMessage.get(CommitMessageInput.TITLE);
+  return formatCommitMessage(convertedType, convertedScope, title!);
 };
 
-export { insertHeader };
+const formatCommitMessage = (type: string, scope: string, title: string) => {
+  return `${type}(${scope}): ${title}`;
+}
