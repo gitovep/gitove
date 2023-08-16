@@ -1,7 +1,6 @@
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { pathExistsSync } from 'path-exists';
 import { DEFAULT_CONFIG } from '../config/defaultConfig';
 
 const dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -15,5 +14,5 @@ const readUserConfigFile = () => {
 
 // user config file이 있는지 확인 후 없으면 default config 읽음
 export const getConfigfile = () => {
-  return pathExistsSync(dirpath) ? readUserConfigFile() : DEFAULT_CONFIG;
+  return existsSync(dirpath) ? readUserConfigFile() : DEFAULT_CONFIG;
 };

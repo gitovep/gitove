@@ -1,11 +1,11 @@
-import { DEFAULT_CONFIG } from "src/config/defaultConfig";
+import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
 
 // 유저가 작성한 커밋메시지(바디)에서 {alias}의 alias 추출하기
 const extractAliasFromKeyword = (commitBody: string): string[] => {
   // 정규식 정의 - {}
   const pattern = /\{([^}]+)\}/g;
   // commitMessage에 {}이 없는 경우에는 빈배열
-  const matchesPattern = commitBody.match(pattern) || []; 
+  const matchesPattern = commitBody.match(pattern) || [];
 
   /** {alias}
    * match[0]: '{'
@@ -16,10 +16,9 @@ const extractAliasFromKeyword = (commitBody: string): string[] => {
   return extractedAlias;
 };
 
-
 // config에서 사전에 추출한 alias와 매칭되는 name 찾기
 const searchAliasFromConfig = (extractedAlias: string[]): string[] => {
-  let matchedName: string[] = [];
+  const matchedName: string[] = [];
 
   DEFAULT_CONFIG.replace.forEach((config) => {
     extractedAlias.forEach((alias) => {

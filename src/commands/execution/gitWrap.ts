@@ -11,7 +11,7 @@ export const push = async (): Promise<void> => {
 };
 
 export const commit = async (
-  title:string,
+  title: string,
   bodies: string[],
 ) => {
   const message: string = `-m ${title}${NEW_LINE}${NEW_LINE}${bodies.join(NEW_LINE)}`;

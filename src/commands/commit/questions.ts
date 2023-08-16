@@ -25,10 +25,12 @@ export const commitQuestions: QuestionCollection<CommitMessageAnswers> = [
     : []),
   {
     name: CommitMessageInput.TITLE,
+    message: 'Enter commit message:',
     type: 'input',
   },
   {
     name: CommitMessageInput.BODY,
+    message: 'Enter commit details:',
     type: 'input',
   },
 ];
