@@ -21,10 +21,7 @@ body:
       label: Reproduction
       description: A [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) is **required**, otherwise the issue might be closed without further notice.
       placeholder: |
-        e.g.
-        - Bug-triggering page URL
         - Clear description of the steps to reproduce the bug
-        - Environment where the bug occurs (operating system, browser version, etc.)
         - If necessary, data or code snippets required for reproduction
     validations:
       required: true
@@ -38,7 +35,6 @@ body:
         Paste the output of `npx envinfo --system --binaries --browsers`
         Or directly fill in the following items:
         - Operating System: [e.g. Windows 10]
-        - Browser: [e.g. Chrome 90.0.4430.212]
         - Other Environment Info: [e.g. Node version, npm version, pnpm version]
     validations:
       required: true
