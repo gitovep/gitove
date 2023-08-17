@@ -3,7 +3,7 @@ import { insertHeader, replaceAliasToName } from 'src/utils';
 import { commitMessage } from './message';
 import { commitQuestions } from './questions';
 import { is } from 'typia';
-import { commit } from '../execution';
+import { commit } from '../../utils/execution';
 
 export const commitAction = async () => {
   const answers: CommitMessageAnswers = await inquirer.prompt(commitQuestions);
