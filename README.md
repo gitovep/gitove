@@ -40,7 +40,10 @@ You can configure your own commit headers by creating `.gitoverc.json`.
 Checkout our [Configuration Guide](./docs/CONFIGURATION_GUIDE.md) for details.
 
 ## Contributing to Gitove
-If you want to take part in `gitove`, read the [contribution guide](./docs/CONTRIBUTING.md).
+
+**Currently, we do not accept contribution because the package is not stable at the moment.**
+
+~~If you want to take part in `gitove`, read the [contribution guide](./docs/CONTRIBUTING.md).~~
 
 ## License
 
