@@ -17,7 +17,4 @@ export const commitAction = async () => {
   const title = insertHeader(commitMessage);
   const message = replaceAliasToName(commitMessage);
   commit(title, [message]);
-
-  console.log(title);
-  console.log(message);
 };

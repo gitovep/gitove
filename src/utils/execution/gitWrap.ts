@@ -15,5 +15,13 @@ export const commit = async (
   bodies: string[],
 ) => {
   const message: string = `-m ${title}${NEW_LINE}${NEW_LINE}${bodies.join(NEW_LINE)}`;
-  await executeGitCommand('commit', message);
+
+  try {
+    await executeGitCommand('commit', message);
+    
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error.message);
+    }
+  }
 };
