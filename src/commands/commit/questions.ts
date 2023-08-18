@@ -1,6 +1,6 @@
 import inquirer, { QuestionCollection } from 'inquirer';
 import inquirerAutocompletePrompt from 'inquirer-autocomplete-prompt';
-import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
+import { DEFAULT_CONFIG } from 'src/config';
 import { capitalizeTitle, filterHeaderSource } from 'src/utils';
 import { CommitMessageInput } from 'src/types/commit';
 
