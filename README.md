@@ -31,7 +31,7 @@ or
 $ gitove c
 ```
 
-TODO: use example GIF
+![](assets/use_example.gif)
 
 
 ## Configuration
