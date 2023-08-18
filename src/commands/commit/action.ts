@@ -1,9 +1,9 @@
 import inquirer from 'inquirer';
 import { insertHeader, replaceAliasToName } from 'src/utils';
+import { commit } from 'src/utils/execution';
 import { commitMessage } from './message';
 import { commitQuestions } from './questions';
 import { is } from 'typia';
-import { commit } from '../../utils/execution';
 
 export const commitAction = async () => {
   const answers: CommitMessageAnswers = await inquirer.prompt(commitQuestions);

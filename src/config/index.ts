@@ -1,3 +1,3 @@
 export * from './defaultConfig';
-export * from './getConfigfile';
-export * from './getValueFromConfig';
+// export * from './getConfigfile';
+// export * from './getValueFromConfig';
