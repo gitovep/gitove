@@ -1,4 +1,4 @@
-import { getConfigfile } from './getConfigfile';
+import { getConfigfile } from '../config/getConfigfile';
 
 const configuration: Configuration = getConfigfile();
 
