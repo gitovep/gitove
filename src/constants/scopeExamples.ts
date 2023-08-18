@@ -2,21 +2,31 @@ export const DEFAULT_SCOPE_EXAMPLES: CustomCommitConfig[] = [
   {
     name: 'Config',
     alias: 'config',
-    description: 'Commits related to project configuration.',
+    description: 'project configuration commits.',
   },
   {
-    name: 'Commit',
-    alias: 'commit',
-    description: 'Commits related to commit command.',
+    name: 'Auth',
+    alias: 'auth',
+    description: 'Autehntication related commits.',
   },
   {
-    name: 'Rebase',
-    alias: 'rebase',
-    description: 'Commits related to rebase command.',
+    name: 'DB',
+    alias: 'database',
+    description: 'Database related commits.',
   },
   {
-    name: 'Push',
-    alias: 'push',
-    description: 'Commits related to push command.',
+    name: 'User',
+    alias: 'user',
+    description: 'User related commits.',
+  },
+  {
+    name: 'Post',
+    alias: 'post',
+    description: 'Post related commits.',
+  },
+  {
+    name: 'Comment',
+    alias: 'comment',
+    description: 'Comment related commits.',
   },
 ];
