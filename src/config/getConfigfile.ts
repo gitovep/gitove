@@ -3,9 +3,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { DEFAULT_CONFIG } from 'src/config/defaultConfig';
 
-const dirname = fileURLToPath(new URL('.', import.meta.url));
-const test = path.resolve(dirname, '../..');
-const dirpath = path.join(test, 'gitoverc.json');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const test = path.resolve(__dirname, '../..');
+const dirpath = path.join(test, '.gitoverc.json');
 
 const readUserConfigFile = () => {
   const readfile: Configuration = JSON.parse(readFileSync(dirpath, { encoding: 'utf-8', flag: 'r' }));
