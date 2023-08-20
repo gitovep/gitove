@@ -1,6 +1,6 @@
 {
   "name": "gitove",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "type": "module",
   "description": "An interactive git cli tool for consistant commit messages.",
   "license": "MIT",
@@ -53,7 +53,6 @@
     "@typescript-eslint/parser": "^6.3.0",
     "babel-plugin-module-extension-resolver": "^1.0.0",
     "babel-plugin-module-resolver": "^5.0.0",
-    "babel-plugin-transform-import-meta": "^2.2.1",
     "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
